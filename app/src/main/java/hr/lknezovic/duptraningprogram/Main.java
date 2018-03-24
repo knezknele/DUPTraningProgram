@@ -65,35 +65,35 @@ public class Main extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
-                        startTimerSuccess();
+                        startTimerFailed();
                     }
                     if (b.equals("4")) {
                         button1.setText("3");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
-                        startTimerSuccess();
+                        startTimerFailed();
                     }
                     if (b.equals("3")) {
                         button1.setText("2");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
-                        startTimerSuccess();
+                        startTimerFailed();
                     }
                     if (b.equals("2")) {
                         button1.setText("1");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
-                        startTimerSuccess();
+                        startTimerFailed();
                     }
                     if (b.equals("1")) {
                         button1.setText("0");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
-                        startTimerSuccess();
+                        startTimerFailed();
                     }
                     if (b.equals("0")) {
                         button1.setText("");
@@ -125,37 +125,42 @@ public class Main extends AppCompatActivity {
                         //result.setText("Congrats! Next time pick up" + newWeight + "kg");
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
-
+                        startTimerSuccess();
                     }
                     if (b2.equals("5")) {
                         button2.setText("4");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
-
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (b2.equals("4")) {
                         button2.setText("3");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
-
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (b2.equals("3")) {
                         button2.setText("2");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
-
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (b2.equals("2")) {
                         button2.setText("1");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
-
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (b2.equals("1")) {
                         button2.setText("0");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
-
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (b2.equals("0")) {
                         button2.setText("");
@@ -172,6 +177,8 @@ public class Main extends AppCompatActivity {
 
             }
         });
+
+
 
 
     }
@@ -219,7 +226,7 @@ public class Main extends AppCompatActivity {
         timer = new CountDownTimer(60 * 5000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                countDowntimer.setText("" + String.format("%d minutes, %d seconds",
+                countDowntimer.setText("" + "Rest for \n" + String.format("%d minutes, %d seconds",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
@@ -233,7 +240,9 @@ public class Main extends AppCompatActivity {
     }
 
     public void stopTimer() {
-            timer.cancel();
 
+        if(countDowntimer != null) {
+            timer.cancel();
+        }
     }
 }
