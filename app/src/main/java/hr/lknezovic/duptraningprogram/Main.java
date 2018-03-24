@@ -13,6 +13,9 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
+
 public class Main extends AppCompatActivity {
 
     private Button button1, button2;
@@ -43,7 +46,6 @@ public class Main extends AppCompatActivity {
                 String b = button1.getText().toString();
 
 
-
                 try {
                     String currentWeight = weight.getText().toString();
                     Float oldWeight = Float.parseFloat(currentWeight);
@@ -54,35 +56,49 @@ public class Main extends AppCompatActivity {
                         //result.setText("Congrats! Next time pick up" + newWeight + "kg");
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
-                        startTimer();
+
+                        startTimerSuccess();
+
                     }
                     if (b.equals("5")) {
                         button1.setText("4");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerSuccess();
                     }
                     if (b.equals("4")) {
                         button1.setText("3");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerSuccess();
                     }
                     if (b.equals("3")) {
                         button1.setText("2");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerSuccess();
                     }
                     if (b.equals("2")) {
                         button1.setText("1");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerSuccess();
                     }
                     if (b.equals("1")) {
                         button1.setText("0");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerSuccess();
                     }
                     if (b.equals("0")) {
                         button1.setText("");
+                        stopTimer();
+                        countDowntimer.setText("");
                     }
 
                     checkButtonValues(button1, button2);
@@ -109,34 +125,42 @@ public class Main extends AppCompatActivity {
                         //result.setText("Congrats! Next time pick up" + newWeight + "kg");
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
+
                     }
                     if (b2.equals("5")) {
                         button2.setText("4");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+
                     }
                     if (b2.equals("4")) {
                         button2.setText("3");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+
                     }
                     if (b2.equals("3")) {
                         button2.setText("2");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+
                     }
                     if (b2.equals("2")) {
                         button2.setText("1");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+
                     }
                     if (b2.equals("1")) {
                         button2.setText("0");
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
+
                     }
                     if (b2.equals("0")) {
                         button2.setText("");
+                        stopTimer();
+                        countDowntimer.setText("");
                     }
 
                     checkButtonValues(button1, button2);
@@ -150,8 +174,8 @@ public class Main extends AppCompatActivity {
         });
 
 
-
     }
+
     public Boolean checkButtonValues(Button button1, Button button2) {
         String b1 = button1.getText().toString();
         String b2 = button2.getText().toString();
@@ -163,31 +187,53 @@ public class Main extends AppCompatActivity {
             if (b1.equals("5") && b2.equals("5") && !b1.equals("") && !b2.equals("")) {
                 result.setText("You strong!" + " Next time pick up " + newWeight + "kg");
                 return true;
-            } else if (b1.equals("") || b2.equals("")){
-                result.setText("Do your next set");
+            } else if (b1.equals("") || b2.equals("")) {
+                result.setText("");
 
             } else
-            result.setText("Dude, get stronger. Next time pick up " + currentWeight + "kg");
+                result.setText("Dude, get stronger. Next time pick up " + currentWeight + "kg");
         } catch (NumberFormatException e) {
 
         }
         return false;
     }
 
-    public void startTimer(){
-        timer = new CountDownTimer(60*1000, 1000) {
+    public void startTimerSuccess() {
+        timer = new CountDownTimer(60 * 3000, 1000) {
             @Override
-            public void onTick(long milliSecondsUntillFinished) {
-                countDowntimer.setText(String.valueOf(counter));
-                counter++;
+            public void onTick(long millisUntilFinished) {
+                countDowntimer.setText("" + "If it was easy, rest for 1 minute and 30 seconds \n" +String.format("%d minutes, %d seconds",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
             }
 
             @Override
             public void onFinish() {
-
+                countDowntimer.setText("On to your next set, lad!");
             }
         }.start();
+    }
 
+    public void startTimerFailed() {
+        timer = new CountDownTimer(60 * 5000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                countDowntimer.setText("" + String.format("%d minutes, %d seconds",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+            }
+
+            @Override
+            public void onFinish() {
+                countDowntimer.setText("On to your next set, lad!");
+            }
+        }.start();
+    }
+
+    public void stopTimer() {
+            timer.cancel();
 
     }
 }
