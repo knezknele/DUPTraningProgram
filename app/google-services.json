@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1069707890734",
+    "firebase_url": "https://duptraningprogramdb.firebaseio.com",
+    "project_id": "duptraningprogramdb",
+    "storage_bucket": "duptraningprogramdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069707890734:android:d218d176c76a9a66",
+        "android_client_info": {
+          "package_name": "hr.lknezovic.duptraningprogram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069707890734-1n05vk86gslcceu02vbaer19ccbat1bp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hr.lknezovic.duptraningprogram",
+            "certificate_hash": "b61faf2317b641e5c28405ee091f597857cf9236"
+          }
+        },
+        {
+          "client_id": "1069707890734-i17ihisjq407o0ehlal1nsnk01c8du71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClQ3RwUYOn-Livtl02cX6WQ196b-TbJLc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069707890734-i17ihisjq407o0ehlal1nsnk01c8du71.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
