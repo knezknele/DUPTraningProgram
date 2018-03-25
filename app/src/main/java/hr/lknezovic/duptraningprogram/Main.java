@@ -1,19 +1,15 @@
 package hr.lknezovic.duptraningprogram;
 
-import android.graphics.Color;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 public class Main extends AppCompatActivity {
@@ -22,7 +18,6 @@ public class Main extends AppCompatActivity {
     private TextView result, countDowntimer;
     private EditText weight;
     private CountDownTimer timer;
-    private int counter = 0;
 
 
     @Override
