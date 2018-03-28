@@ -21,6 +21,10 @@ public class Lift {
     }
 
 
+    public Lift() {
+
+    }
+
     public String getId() {
         return id;
     }

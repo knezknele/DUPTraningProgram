@@ -2,7 +2,6 @@ package hr.lknezovic.duptraningprogram;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,19 +9,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class Main extends AppCompatActivity {
 
-    private Button button1, button2;
+    private Button button1, button2, button3, button4, button5;
     private TextView result, countDowntimer, nameView;
     private EditText weightText;
     private CountDownTimer timer;
     DatabaseReference ref;
+
+    List<Lift> weightPerLift;
 
 
     @Override
@@ -34,11 +43,15 @@ public class Main extends AppCompatActivity {
         nameView = (TextView) findViewById(R.id.Squat);
         button1 = (Button) findViewById(R.id.button);
         button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+        button5 = (Button) findViewById(R.id.button5);
         result = (TextView) findViewById(R.id.result);
         weightText = (EditText) findViewById(R.id.weight);
         countDowntimer = (TextView) findViewById(R.id.timer);
 
 
+        weightPerLift = new ArrayList<>();
         ref = FirebaseDatabase.getInstance().getReference("lifts");
 
 
@@ -175,13 +188,64 @@ public class Main extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Entrer value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
 
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("lifts");
+        Query chatQuery = ref.limitToLast(1);
+        chatQuery.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+
+                        if (dataSnapshot.exists()) {
+                            collcetData((Map<String, Object>) dataSnapshot.getValue());
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
+    }
+
+    private void collcetData(Map<String, Object> data) {
+
+        ArrayList<String> lifts = new ArrayList<>();
+        ArrayList<String> weights = new ArrayList<>();
+
+        //iterate through each user, ignoring their UID
+
+
+        for (Map.Entry<String, Object> entry : data.entrySet()) {
+
+            //Get user map
+            Map singleLift = (Map) entry.getValue();
+            Map singleWeight = (Map) entry.getValue();
+            //Get phone field and append to list
+            weights.add(String.valueOf(singleWeight.get("weight")));
+            lifts.add((String) singleLift.get("name"));
+
+            String weight = weights.get(weights.size() - 1);
+
+            String lift = lifts.get(lifts.size() - 1);
+            if (lift.equals("Squat")) {
+                weightText.setText(weight);
+
+            }
+        }
+
+    }
+
 
     public void addWeight(Double weight) {
         String name = nameView.getText().toString().trim();
@@ -189,9 +253,8 @@ public class Main extends AppCompatActivity {
 
         Lift lift = new Lift(id, name, weight);
         ref.child(id).setValue(lift);
-
-
     }
+
 
     public Boolean checkButtonValues(Button button1, Button button2) {
         String b1 = button1.getText().toString();
@@ -204,14 +267,17 @@ public class Main extends AppCompatActivity {
             if (b1.equals("5") && b2.equals("5") && !b1.equals("") && !b2.equals("")) {
                 result.setText("You strong!" + " Next time pick up " + newWeight + "kg");
                 addWeight(newWeight);
+
                 return true;
             } else if (b1.equals("") || b2.equals("")) {
                 result.setText("");
 
             } else
                 result.setText("Dude, get stronger. Next time pick up " + currentWeight + "kg");
-                Double oldWright = Double.parseDouble(currentWeight);
-                addWeight(oldWright);
+            Double oldWright = Double.parseDouble(currentWeight);
+            addWeight(oldWright);
+
+
         } catch (NumberFormatException e) {
 
         }
@@ -219,6 +285,11 @@ public class Main extends AppCompatActivity {
     }
 
     public void startTimerSuccess() {
+        String counter = countDowntimer.getText().toString();
+        if (!counter.isEmpty()) {
+            stopTimer();
+        }
+
         timer = new CountDownTimer(60 * 3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -253,7 +324,6 @@ public class Main extends AppCompatActivity {
     }
 
     public void stopTimer() {
-
         if (countDowntimer != null) {
             timer.cancel();
         }
