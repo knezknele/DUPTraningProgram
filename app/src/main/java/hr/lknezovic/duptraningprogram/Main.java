@@ -116,7 +116,7 @@ public class Main extends AppCompatActivity {
                         countDowntimer.setText("");
                     }
 
-                    checkButtonValues(button1, button2);
+                    checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
                     Toast.makeText(getApplicationContext(), "Entrer value for weight!",
                             Toast.LENGTH_LONG).show();
@@ -183,11 +183,218 @@ public class Main extends AppCompatActivity {
                         countDowntimer.setText("");
                     }
 
-                    checkButtonValues(button1, button2);
+                    checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
                     Toast.makeText(getApplicationContext(), "Entrer value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String b3 = button3.getText().toString();
+
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (b3.equals("")) {
+                        button3.setText("5");
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (b3.equals("5")) {
+                        button3.setText("4");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b3.equals("4")) {
+                        button3.setText("3");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b3.equals("3")) {
+                        button3.setText("2");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b3.equals("2")) {
+                        button3.setText("1");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b3.equals("1")) {
+                        button3.setText("0");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b3.equals("0")) {
+                        button3.setText("");
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValues(button1, button2, button3, button4, button5);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String b4 = button4.getText().toString();
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (b4.equals("")) {
+                        button4.setText("5");
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (b4.equals("5")) {
+                        button4.setText("4");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b4.equals("4")) {
+                        button4.setText("3");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b4.equals("3")) {
+                        button4.setText("2");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b4.equals("2")) {
+                        button4.setText("1");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b4.equals("1")) {
+                        button4.setText("0");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b4.equals("0")) {
+                        button4.setText("");
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValues(button1, button2, button3, button4, button5);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String b5 = button5.getText().toString();
+
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (b5.equals("")) {
+                        button5.setText("5");
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (b5.equals("5")) {
+                        button5.setText("4");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b5.equals("4")) {
+                        button5.setText("3");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b5.equals("3")) {
+                        button5.setText("2");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b5.equals("2")) {
+                        button5.setText("1");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b5.equals("1")) {
+                        button5.setText("0");
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (b5.equals("0")) {
+                        button5.setText("");
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValues(button1, button2, button3, button4, button5);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -256,20 +463,23 @@ public class Main extends AppCompatActivity {
     }
 
 
-    public Boolean checkButtonValues(Button button1, Button button2) {
+    public Boolean checkButtonValues(Button button1, Button button2, Button button3, Button button4, Button button5) {
         String b1 = button1.getText().toString();
         String b2 = button2.getText().toString();
+        String b3 = button3.getText().toString();
+        String b4 = button4.getText().toString();
+        String b5 = button5.getText().toString();
         String currentWeight = weightText.getText().toString();
         Float oldWeight = Float.parseFloat(currentWeight);
         Double newWeight = oldWeight + 2.5;
 
         try {
-            if (b1.equals("5") && b2.equals("5") && !b1.equals("") && !b2.equals("")) {
+            if (b1.equals("5") && b2.equals("5") && b3.equals("5") && b4.equals("5") && b5.equals("5") && !b1.equals("") && !b2.equals("") && !b3.equals("") && !b4.equals("") && !b5.equals("")) {
                 result.setText("You strong!" + " Next time pick up " + newWeight + "kg");
                 addWeight(newWeight);
 
                 return true;
-            } else if (b1.equals("") || b2.equals("")) {
+            } else if (b1.equals("") || b2.equals("") || b3.equals("") || b4.equals("") || b5.equals("")) {
                 result.setText("");
 
             } else
