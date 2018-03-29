@@ -63,8 +63,8 @@ public class Main extends AppCompatActivity {
         bd2 = (Button) findViewById(R.id.buttonDeadlift2);
         bd3 = (Button) findViewById(R.id.buttonDeadlift3);
         bd4 = (Button) findViewById(R.id.buttonDeadlift4);
-        bd1 = (Button) findViewById(R.id.buttonDeadlift5);
-        bd2 = (Button) findViewById(R.id.buttonDeadlift6);
+        bd5 = (Button) findViewById(R.id.buttonDeadlift5);
+        bd6 = (Button) findViewById(R.id.buttonDeadlift6);
 
 
         weightPerLift = new ArrayList<>();
@@ -508,7 +508,7 @@ public class Main extends AppCompatActivity {
                     Double newWeight = oldWeight + 2.5;
 
                     if (bBench1.equals("")) {
-                        bb1.setText("5");
+                        bb1.setText("8");
                         bb1.setBackgroundResource(R.drawable.redroundbutton);
                         bb1.setTextColor(getResources().getColor(R.color.textColor));
 
@@ -517,6 +517,33 @@ public class Main extends AppCompatActivity {
 
                         startTimerSuccess();
 
+                    }
+                    if (bBench1.equals("8")) {
+                        bb1.setText("7");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("7")) {
+                        bb1.setText("6");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("6")) {
+                        bb1.setText("5");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (bBench1.equals("5")) {
                         bb1.setText("4");
@@ -590,7 +617,7 @@ public class Main extends AppCompatActivity {
                     Double newWeight = oldWeight + 2.5;
 
                     if (bBench2.equals("")) {
-                        bb2.setText("5");
+                        bb2.setText("8");
                         bb2.setBackgroundResource(R.drawable.redroundbutton);
                         bb2.setTextColor(getResources().getColor(R.color.textColor));
 
@@ -599,6 +626,33 @@ public class Main extends AppCompatActivity {
 
                         startTimerSuccess();
 
+                    }
+                    if (bBench2.equals("8")) {
+                        bb2.setText("7");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("7")) {
+                        bb2.setText("6");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("6")) {
+                        bb2.setText("5");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (bBench2.equals("5")) {
                         bb2.setText("4");
@@ -672,7 +726,7 @@ public class Main extends AppCompatActivity {
                     Double newWeight = oldWeight + 2.5;
 
                     if (bBench3.equals("")) {
-                        bb3.setText("5");
+                        bb3.setText("8");
                         bb3.setBackgroundResource(R.drawable.redroundbutton);
                         bb3.setTextColor(getResources().getColor(R.color.textColor));
 
@@ -681,6 +735,33 @@ public class Main extends AppCompatActivity {
 
                         startTimerSuccess();
 
+                    }
+                    if (bBench3.equals("8")) {
+                        bb3.setText("7");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("7")) {
+                        bb3.setText("6");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("6")) {
+                        bb3.setText("5");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (bBench3.equals("5")) {
                         bb3.setText("4");
@@ -754,7 +835,7 @@ public class Main extends AppCompatActivity {
                     Double newWeight = oldWeight + 2.5;
 
                     if (bBench4.equals("")) {
-                        bb4.setText("5");
+                        bb4.setText("8");
                         bb4.setBackgroundResource(R.drawable.redroundbutton);
                         bb4.setTextColor(getResources().getColor(R.color.textColor));
 
@@ -763,6 +844,33 @@ public class Main extends AppCompatActivity {
 
                         startTimerSuccess();
 
+                    }
+                    if (bBench4.equals("8")) {
+                        bb4.setText("7");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("7")) {
+                        bb4.setText("6");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("6")) {
+                        bb4.setText("5");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
                     }
                     if (bBench4.equals("5")) {
                         bb4.setText("4");
@@ -821,6 +929,398 @@ public class Main extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        bd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bDeadlift = bd1.getText().toString();
+
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bDeadlift.equals("")) {
+                        bd1.setText("3");
+                        bd1.setBackgroundResource(R.drawable.redroundbutton);
+                        bd1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bDeadlift.equals("3")) {
+                        bd1.setText("2");
+                        bd1.setBackgroundResource(R.drawable.redroundbutton);
+                        bd1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDeadlift.equals("2")) {
+                        bd1.setText("1");
+                        bd1.setBackgroundResource(R.drawable.redroundbutton);
+                        bd1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDeadlift.equals("1")) {
+                        bd1.setText("0");
+                        bd1.setBackgroundResource(R.drawable.redroundbutton);
+                        bd1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDeadlift.equals("0")) {
+                        bd1.setText("");
+                        bd1.setBackgroundResource(R.drawable.roundedbutton);
+                        squatClicked = true;
+
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValuesDeadlift(bd1, bd2, bd3, bd4, bd5, bd6);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        bd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bDeadlift2 = bd2.getText().toString();
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bDeadlift2.equals("")) {
+                        bd2.setText("3");
+                        bd2.setBackgroundResource(R.drawable.redroundbutton);
+                        bd2.setTextColor(getResources().getColor(R.color.textColor));
+                        //result.setText("Congrats! Next time pick up" + newWeight + "kg");
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+                        startTimerSuccess();
+                    }
+                    if (bDeadlift2.equals("3")) {
+                        bd2.setText("2");
+                        bd2.setBackgroundResource(R.drawable.redroundbutton);
+                        bd2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDeadlift2.equals("2")) {
+                        bd2.setText("1");
+                        bd2.setBackgroundResource(R.drawable.redroundbutton);
+                        bd2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDeadlift2.equals("1")) {
+                        bd2.setText("0");
+                        bd2.setBackgroundResource(R.drawable.redroundbutton);
+                        bd2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDeadlift2.equals("0")) {
+                        bd2.setText("");
+                        bd2.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValuesDeadlift(bd1, bd2, bd3, bd4, bd5, bd6);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bd3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bDead3 = bd3.getText().toString();
+
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bDead3.equals("")) {
+                        bd3.setText("3");
+                        bd3.setBackgroundResource(R.drawable.redroundbutton);
+                        bd3.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bDead3.equals("3")) {
+                        bd3.setText("2");
+                        bd3.setBackgroundResource(R.drawable.redroundbutton);
+                        bd3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead3.equals("2")) {
+                        bd3.setText("1");
+                        bd3.setBackgroundResource(R.drawable.redroundbutton);
+                        bd3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead3.equals("1")) {
+                        bd3.setText("0");
+                        bd3.setBackgroundResource(R.drawable.redroundbutton);
+                        bd3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead3.equals("0")) {
+                        bd3.setText("");
+                        bd3.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValuesDeadlift(bd1, bd2, bd3, bd4, bd5, bd6);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bd4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bDead4 = bd4.getText().toString();
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bDead4.equals("")) {
+                        bd4.setText("3");
+                        bd4.setBackgroundResource(R.drawable.redroundbutton);
+                        bd4.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bDead4.equals("3")) {
+                        bd4.setText("2");
+                        bd4.setBackgroundResource(R.drawable.redroundbutton);
+                        bd4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead4.equals("2")) {
+                        bd4.setText("1");
+                        bd4.setBackgroundResource(R.drawable.redroundbutton);
+                        bd4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead4.equals("1")) {
+                        bd4.setText("0");
+                        bd4.setBackgroundResource(R.drawable.redroundbutton);
+                        bd4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead4.equals("0")) {
+                        bd4.setText("");
+                        bd4.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValuesDeadlift(bd1, bd2, bd3, bd4, bd5, bd6);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bd5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bDead5 = bd5.getText().toString();
+
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bDead5.equals("")) {
+                        bd5.setText("3");
+                        bd5.setBackgroundResource(R.drawable.redroundbutton);
+                        bd5.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bDead5.equals("3")) {
+                        bd5.setText("2");
+                        bd5.setBackgroundResource(R.drawable.redroundbutton);
+                        bd5.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead5.equals("2")) {
+                        bd5.setText("1");
+                        bd5.setBackgroundResource(R.drawable.redroundbutton);
+                        bd5.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead5.equals("1")) {
+                        bd5.setText("0");
+                        bd5.setBackgroundResource(R.drawable.redroundbutton);
+                        bd5.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead5.equals("0")) {
+                        bd5.setText("");
+                        bd5.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValuesDeadlift(bd1, bd2, bd3, bd4, bd5, bd6);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        bd6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bDead6 = bd6.getText().toString();
+
+
+                try {
+                    String currentWeight = weightText.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bDead6.equals("")) {
+                        bd6.setText("3");
+                        bd6.setBackgroundResource(R.drawable.redroundbutton);
+                        bd6.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bDead6.equals("3")) {
+                        bd6.setText("2");
+                        bd6.setBackgroundResource(R.drawable.redroundbutton);
+                        bd6.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead6.equals("2")) {
+                        bd6.setText("1");
+                        bd6.setBackgroundResource(R.drawable.redroundbutton);
+                        bd6.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead6.equals("1")) {
+                        bd6.setText("0");
+                        bd6.setBackgroundResource(R.drawable.redroundbutton);
+                        bd6.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bDead6.equals("0")) {
+                        bd6.setText("");
+                        bd6.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkButtonValuesDeadlift(bd1, bd2, bd3, bd4, bd5, bd6);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -1047,7 +1547,7 @@ public class Main extends AppCompatActivity {
         Double newWeight = oldWeight + 2.5;
 
         try {
-            if (bBench1.equals("5") && bBench2.equals("5") && bBench3.equals("5") && bBench4.equals("5") && !bBench1.equals("") && !bBench2.equals("") && !bBench3.equals("") && !bBench4.equals("")) {
+            if (bBench1.equals("8") && bBench2.equals("8") && bBench3.equals("8") && bBench4.equals("8") && !bBench1.equals("") && !bBench2.equals("") && !bBench3.equals("") && !bBench4.equals("")) {
                 result.setText("You strong!" + " Next time pick up " + newWeight + "kg");
                 addBenchWeight(newWeight);
 
@@ -1066,6 +1566,39 @@ public class Main extends AppCompatActivity {
         }
         return false;
     }
+
+    public Boolean checkButtonValuesDeadlift(Button bd1, Button bd2, Button bd3, Button bd4, Button bd5, Button bd6) {
+        String bDead1 = bd1.getText().toString();
+        String bDead2 = bd2.getText().toString();
+        String bDead3 = bd3.getText().toString();
+        String bDead4 = bd4.getText().toString();
+        String bDead5 = bd5.getText().toString();
+        String bDead6 = bd6.getText().toString();
+        String currentWeight = weightD.getText().toString();
+        Float oldWeight = Float.parseFloat(currentWeight);
+        Double newWeight = oldWeight + 2.5;
+
+        try {
+            if (bDead1.equals("3") && bDead2.equals("3") && bDead3.equals("3") && bDead4.equals("3") && bDead5.equals("3") && bDead6.equals("3") && !bDead1.equals("") && !bDead2.equals("") && !bDead3.equals("") && !bDead4.equals("") && !bDead5.equals("") && !bDead6.equals("")) {
+                result.setText("You strong!" + " Next time pick up " + newWeight + "kg");
+                addDeadliftWeight(newWeight);
+
+                return true;
+            } else if (bDead1.equals("") || bDead2.equals("") || bDead3.equals("") || bDead4.equals("") || bDead5.equals("") || bDead6.equals("")) {
+                result.setText("");
+
+            } else
+                result.setText("Dude, get stronger. Next time pick up " + currentWeight + "kg");
+            Double oldWright = Double.parseDouble(currentWeight);
+            addDeadliftWeight(oldWright);
+
+
+        } catch (NumberFormatException e) {
+
+        }
+        return false;
+    }
+
 
     public void startTimerSuccess() {
         String counter = countDowntimer.getText().toString();
