@@ -1,6 +1,5 @@
 package hr.lknezovic.duptraningprogram;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -20,17 +19,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class Main extends AppCompatActivity {
 
     private Button button1, button2, button3, button4, button5, bb1, bb2, bb3, bb4;
-    private TextView result, countDowntimer, nameView;
-    private EditText weightText;
+    private TextView result, countDowntimer, nameView, benchNameView, DLNameView;
+    private EditText weightText, weightB, weightD;
     private CountDownTimer timer;
-    DatabaseReference ref;
+    DatabaseReference ref, refBench,refDL;
+    private boolean squatClicked;
 
     List<Lift> weightPerLift;
 
@@ -47,19 +45,29 @@ public class Main extends AppCompatActivity {
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
         button5 = (Button) findViewById(R.id.button5);
-        result = (TextView) findViewById(R.id.result);
         weightText = (EditText) findViewById(R.id.weight);
+
+        result = (TextView) findViewById(R.id.result);
         countDowntimer = (TextView) findViewById(R.id.timer);
 
-
+        benchNameView = (TextView) findViewById(R.id.bench);
+        weightB = (EditText) findViewById(R.id.weightBench);
         bb1 = (Button) findViewById(R.id.buttonBench1);
         bb2 = (Button) findViewById(R.id.buttonBench2);
         bb3 = (Button) findViewById(R.id.buttonBench3);
         bb4 = (Button) findViewById(R.id.buttonBench4);
 
+        weightD = (EditText) findViewById(R.id.weightDeadlift);
+        DLNameView = (TextView) findViewById(R.id.deadlift);
+
 
         weightPerLift = new ArrayList<>();
+
         ref = FirebaseDatabase.getInstance().getReference("lifts");
+
+        refBench = FirebaseDatabase.getInstance().getReference("bench");
+
+        refDL = FirebaseDatabase.getInstance().getReference("deadlift");
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +84,7 @@ public class Main extends AppCompatActivity {
                         button1.setText("5");
                         button1.setBackgroundResource(R.drawable.redroundbutton);
                         button1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
 
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
@@ -87,6 +96,8 @@ public class Main extends AppCompatActivity {
                         button1.setText("4");
                         button1.setBackgroundResource(R.drawable.redroundbutton);
                         button1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -96,6 +107,8 @@ public class Main extends AppCompatActivity {
                         button1.setText("3");
                         button1.setBackgroundResource(R.drawable.redroundbutton);
                         button1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -105,6 +118,8 @@ public class Main extends AppCompatActivity {
                         button1.setText("2");
                         button1.setBackgroundResource(R.drawable.redroundbutton);
                         button1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -114,6 +129,8 @@ public class Main extends AppCompatActivity {
                         button1.setText("1");
                         button1.setBackgroundResource(R.drawable.redroundbutton);
                         button1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -123,6 +140,8 @@ public class Main extends AppCompatActivity {
                         button1.setText("0");
                         button1.setBackgroundResource(R.drawable.redroundbutton);
                         button1.setTextColor(getResources().getColor(R.color.textColor));
+                        squatClicked = true;
+
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -131,13 +150,15 @@ public class Main extends AppCompatActivity {
                     if (b.equals("0")) {
                         button1.setText("");
                         button1.setBackgroundResource(R.drawable.roundedbutton);
+                        squatClicked = true;
+
                         stopTimer();
                         countDowntimer.setText("");
                     }
 
                     checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
 
@@ -217,7 +238,7 @@ public class Main extends AppCompatActivity {
 
                     checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -299,7 +320,7 @@ public class Main extends AppCompatActivity {
 
                     checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -380,7 +401,7 @@ public class Main extends AppCompatActivity {
 
                     checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -462,10 +483,338 @@ public class Main extends AppCompatActivity {
 
                     checkButtonValues(button1, button2, button3, button4, button5);
                 } catch (NumberFormatException e) {
-                    Toast.makeText(getApplicationContext(), "Entrer value for weight!",
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
                             Toast.LENGTH_LONG).show();
                 }
 
+            }
+        });
+
+        bb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bBench1 = bb1.getText().toString();
+
+
+                try {
+                    String currentWeight = weightB.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bBench1.equals("")) {
+                        bb1.setText("5");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bBench1.equals("5")) {
+                        bb1.setText("4");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("4")) {
+                        bb1.setText("3");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("3")) {
+                        bb1.setText("2");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("2")) {
+                        bb1.setText("1");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("1")) {
+                        bb1.setText("0");
+                        bb1.setBackgroundResource(R.drawable.redroundbutton);
+                        bb1.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench1.equals("0")) {
+                        bb1.setText("");
+                        bb1.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkBenchButtonValues(bb1, bb2, bb3, bb4);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bBench2 = bb2.getText().toString();
+
+
+                try {
+                    String currentWeight = weightB.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bBench2.equals("")) {
+                        bb2.setText("5");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bBench2.equals("5")) {
+                        bb2.setText("4");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("4")) {
+                        bb2.setText("3");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("3")) {
+                        bb2.setText("2");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("2")) {
+                        bb2.setText("1");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("1")) {
+                        bb2.setText("0");
+                        bb2.setBackgroundResource(R.drawable.redroundbutton);
+                        bb2.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench2.equals("0")) {
+                        bb2.setText("");
+                        bb2.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkBenchButtonValues(bb1, bb2, bb3, bb4);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bb3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bBench3 = bb3.getText().toString();
+
+
+                try {
+                    String currentWeight = weightB.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bBench3.equals("")) {
+                        bb3.setText("5");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bBench3.equals("5")) {
+                        bb3.setText("4");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("4")) {
+                        bb3.setText("3");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("3")) {
+                        bb3.setText("2");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("2")) {
+                        bb3.setText("1");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("1")) {
+                        bb3.setText("0");
+                        bb3.setBackgroundResource(R.drawable.redroundbutton);
+                        bb3.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench3.equals("0")) {
+                        bb3.setText("");
+                        bb3.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkBenchButtonValues(bb1, bb2, bb3, bb4);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        bb4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bBench4 = bb4.getText().toString();
+
+
+                try {
+                    String currentWeight = weightB.getText().toString();
+                    Float oldWeight = Float.parseFloat(currentWeight);
+                    Double newWeight = oldWeight + 2.5;
+
+                    if (bBench4.equals("")) {
+                        bb4.setText("5");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+
+                        Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
+                                Toast.LENGTH_LONG).show();
+
+                        startTimerSuccess();
+
+                    }
+                    if (bBench4.equals("5")) {
+                        bb4.setText("4");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("4")) {
+                        bb4.setText("3");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("3")) {
+                        bb4.setText("2");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("2")) {
+                        bb4.setText("1");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("1")) {
+                        bb4.setText("0");
+                        bb4.setBackgroundResource(R.drawable.redroundbutton);
+                        bb4.setTextColor(getResources().getColor(R.color.textColor));
+                        Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
+                                Toast.LENGTH_LONG).show();
+                        stopTimer();
+                        startTimerFailed();
+                    }
+                    if (bBench4.equals("0")) {
+                        bb4.setText("");
+                        bb4.setBackgroundResource(R.drawable.roundedbutton);
+                        stopTimer();
+                        countDowntimer.setText("");
+                    }
+
+                    checkBenchButtonValues(bb1, bb2, bb3, bb4);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getApplicationContext(), "Enter value for weight!",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -477,6 +826,13 @@ public class Main extends AppCompatActivity {
         super.onStart();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("lifts");
         Query chatQuery = ref.limitToLast(1);
+
+        DatabaseReference refBench = FirebaseDatabase.getInstance().getReference().child("bench");
+        Query benchQuery = refBench.limitToLast(1);
+
+        DatabaseReference refDL = FirebaseDatabase.getInstance().getReference().child("deadlift");
+        Query dlQuery = refDL.limitToLast(1);
+
         chatQuery.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
@@ -485,6 +841,42 @@ public class Main extends AppCompatActivity {
 
                         if (dataSnapshot.exists()) {
                             collcetData((Map<String, Object>) dataSnapshot.getValue());
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
+
+        benchQuery.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+
+                        if (dataSnapshot.exists()) {
+                            collcetDataBench((Map<String, Object>) dataSnapshot.getValue());
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
+
+        dlQuery.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+
+                        if (dataSnapshot.exists()) {
+                            collcetDataDeadlift((Map<String, Object>) dataSnapshot.getValue());
 
                         }
                     }
@@ -516,10 +908,64 @@ public class Main extends AppCompatActivity {
             String weight = weights.get(weights.size() - 1);
 
             String lift = lifts.get(lifts.size() - 1);
-            if (lift.equals("Squat")) {
+
                 weightText.setText(weight);
 
-            }
+
+        }
+
+    }
+
+    private void collcetDataBench(Map<String, Object> data) {
+
+        ArrayList<String> lifts = new ArrayList<>();
+        ArrayList<String> weights = new ArrayList<>();
+
+        //iterate through each user, ignoring their UID
+
+
+        for (Map.Entry<String, Object> entry : data.entrySet()) {
+
+            //Get user map
+            Map singleLift = (Map) entry.getValue();
+            Map singleWeight = (Map) entry.getValue();
+            //Get phone field and append to list
+            weights.add(String.valueOf(singleWeight.get("weight")));
+            lifts.add((String) singleLift.get("name"));
+
+            String weight = weights.get(weights.size() - 1);
+
+            String lift = lifts.get(lifts.size() - 1);
+
+            weightB.setText(weight);
+
+        }
+
+    }
+
+    private void collcetDataDeadlift(Map<String, Object> data) {
+
+        ArrayList<String> lifts = new ArrayList<>();
+        ArrayList<String> weights = new ArrayList<>();
+
+        //iterate through each user, ignoring their UID
+
+
+        for (Map.Entry<String, Object> entry : data.entrySet()) {
+
+            //Get user map
+            Map singleLift = (Map) entry.getValue();
+            Map singleWeight = (Map) entry.getValue();
+            //Get phone field and append to list
+            weights.add(String.valueOf(singleWeight.get("weight")));
+            lifts.add((String) singleLift.get("name"));
+
+            String weight = weights.get(weights.size() - 1);
+
+            String lift = lifts.get(lifts.size() - 1);
+
+            weightD.setText(weight);
+
         }
 
     }
@@ -527,10 +973,29 @@ public class Main extends AppCompatActivity {
 
     public void addWeight(Double weight) {
         String name = nameView.getText().toString().trim();
+
         String id = ref.push().getKey();
 
         Lift lift = new Lift(id, name, weight);
         ref.child(id).setValue(lift);
+    }
+
+    public void addBenchWeight(Double weight) {
+        String name = benchNameView.getText().toString().trim();
+
+        String id = refBench.push().getKey();
+
+        Lift lift = new Lift(id, name, weight);
+        refBench.child(id).setValue(lift);
+    }
+
+    public void addDeadliftWeight(Double weight) {
+        String name = DLNameView.getText().toString().trim();
+
+        String id = refDL.push().getKey();
+
+        Lift lift = new Lift(id, name, weight);
+        refDL.child(id).setValue(lift);
     }
 
 
@@ -557,6 +1022,37 @@ public class Main extends AppCompatActivity {
                 result.setText("Dude, get stronger. Next time pick up " + currentWeight + "kg");
             Double oldWright = Double.parseDouble(currentWeight);
             addWeight(oldWright);
+
+
+        } catch (NumberFormatException e) {
+
+        }
+        return false;
+    }
+
+
+    public Boolean checkBenchButtonValues(Button bb1, Button bb2, Button bb3, Button bb4) {
+        String bBench1 = bb1.getText().toString();
+        String bBench2 = bb2.getText().toString();
+        String bBench3 = bb3.getText().toString();
+        String bBench4 = bb4.getText().toString();
+        String currentWeight = weightB.getText().toString();
+        Float oldWeight = Float.parseFloat(currentWeight);
+        Double newWeight = oldWeight + 2.5;
+
+        try {
+            if (bBench1.equals("5") && bBench2.equals("5") && bBench3.equals("5") && bBench4.equals("5") && !bBench1.equals("") && !bBench2.equals("") && !bBench3.equals("") && !bBench4.equals("")) {
+                result.setText("You strong!" + " Next time pick up " + newWeight + "kg");
+                addBenchWeight(newWeight);
+
+                return true;
+            } else if (bBench1.equals("") || bBench2.equals("") || bBench3.equals("") || bBench4.equals("")) {
+                result.setText("");
+
+            } else
+                result.setText("Dude, get stronger. Next time pick up " + currentWeight + "kg");
+            Double oldWright = Double.parseDouble(currentWeight);
+            addBenchWeight(oldWright);
 
 
         } catch (NumberFormatException e) {
