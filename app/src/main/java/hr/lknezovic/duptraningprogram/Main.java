@@ -1,5 +1,6 @@
 package hr.lknezovic.duptraningprogram;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main extends AppCompatActivity {
 
-    private Button button1, button2, button3, button4, button5;
+    private Button button1, button2, button3, button4, button5, bb1, bb2, bb3, bb4;
     private TextView result, countDowntimer, nameView;
     private EditText weightText;
     private CountDownTimer timer;
@@ -51,9 +52,14 @@ public class Main extends AppCompatActivity {
         countDowntimer = (TextView) findViewById(R.id.timer);
 
 
+        bb1 = (Button) findViewById(R.id.buttonBench1);
+        bb2 = (Button) findViewById(R.id.buttonBench2);
+        bb3 = (Button) findViewById(R.id.buttonBench3);
+        bb4 = (Button) findViewById(R.id.buttonBench4);
+
+
         weightPerLift = new ArrayList<>();
         ref = FirebaseDatabase.getInstance().getReference("lifts");
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +74,8 @@ public class Main extends AppCompatActivity {
 
                     if (b.equals("")) {
                         button1.setText("5");
+                        button1.setBackgroundResource(R.drawable.redroundbutton);
+                        button1.setTextColor(getResources().getColor(R.color.textColor));
 
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
@@ -77,6 +85,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b.equals("5")) {
                         button1.setText("4");
+                        button1.setBackgroundResource(R.drawable.redroundbutton);
+                        button1.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -84,6 +94,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b.equals("4")) {
                         button1.setText("3");
+                        button1.setBackgroundResource(R.drawable.redroundbutton);
+                        button1.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -91,6 +103,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b.equals("3")) {
                         button1.setText("2");
+                        button1.setBackgroundResource(R.drawable.redroundbutton);
+                        button1.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -98,6 +112,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b.equals("2")) {
                         button1.setText("1");
+                        button1.setBackgroundResource(R.drawable.redroundbutton);
+                        button1.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -105,6 +121,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b.equals("1")) {
                         button1.setText("0");
+                        button1.setBackgroundResource(R.drawable.redroundbutton);
+                        button1.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -112,6 +130,7 @@ public class Main extends AppCompatActivity {
                     }
                     if (b.equals("0")) {
                         button1.setText("");
+                        button1.setBackgroundResource(R.drawable.roundedbutton);
                         stopTimer();
                         countDowntimer.setText("");
                     }
@@ -137,6 +156,8 @@ public class Main extends AppCompatActivity {
 
                     if (b2.equals("")) {
                         button2.setText("5");
+                        button2.setBackgroundResource(R.drawable.redroundbutton);
+                        button2.setTextColor(getResources().getColor(R.color.textColor));
                         //result.setText("Congrats! Next time pick up" + newWeight + "kg");
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
@@ -144,6 +165,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b2.equals("5")) {
                         button2.setText("4");
+                        button2.setBackgroundResource(R.drawable.redroundbutton);
+                        button2.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -151,6 +174,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b2.equals("4")) {
                         button2.setText("3");
+                        button2.setBackgroundResource(R.drawable.redroundbutton);
+                        button2.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -158,6 +183,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b2.equals("3")) {
                         button2.setText("2");
+                        button2.setBackgroundResource(R.drawable.redroundbutton);
+                        button2.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -165,6 +192,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b2.equals("2")) {
                         button2.setText("1");
+                        button2.setBackgroundResource(R.drawable.redroundbutton);
+                        button2.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -172,6 +201,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b2.equals("1")) {
                         button2.setText("0");
+                        button2.setBackgroundResource(R.drawable.redroundbutton);
+                        button2.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -179,6 +210,7 @@ public class Main extends AppCompatActivity {
                     }
                     if (b2.equals("0")) {
                         button2.setText("");
+                        button2.setBackgroundResource(R.drawable.roundedbutton);
                         stopTimer();
                         countDowntimer.setText("");
                     }
@@ -204,6 +236,8 @@ public class Main extends AppCompatActivity {
 
                     if (b3.equals("")) {
                         button3.setText("5");
+                        button3.setBackgroundResource(R.drawable.redroundbutton);
+                        button3.setTextColor(getResources().getColor(R.color.textColor));
 
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
@@ -213,6 +247,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b3.equals("5")) {
                         button3.setText("4");
+                        button3.setBackgroundResource(R.drawable.redroundbutton);
+                        button3.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -220,6 +256,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b3.equals("4")) {
                         button3.setText("3");
+                        button3.setBackgroundResource(R.drawable.redroundbutton);
+                        button3.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -227,6 +265,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b3.equals("3")) {
                         button3.setText("2");
+                        button3.setBackgroundResource(R.drawable.redroundbutton);
+                        button3.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -234,6 +274,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b3.equals("2")) {
                         button3.setText("1");
+                        button3.setBackgroundResource(R.drawable.redroundbutton);
+                        button3.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -241,6 +283,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b3.equals("1")) {
                         button3.setText("0");
+                        button3.setBackgroundResource(R.drawable.redroundbutton);
+                        button3.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -248,6 +292,7 @@ public class Main extends AppCompatActivity {
                     }
                     if (b3.equals("0")) {
                         button3.setText("");
+                        button3.setBackgroundResource(R.drawable.roundedbutton);
                         stopTimer();
                         countDowntimer.setText("");
                     }
@@ -272,6 +317,8 @@ public class Main extends AppCompatActivity {
 
                     if (b4.equals("")) {
                         button4.setText("5");
+                        button4.setBackgroundResource(R.drawable.redroundbutton);
+                        button4.setTextColor(getResources().getColor(R.color.textColor));
 
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
@@ -281,6 +328,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b4.equals("5")) {
                         button4.setText("4");
+                        button4.setBackgroundResource(R.drawable.redroundbutton);
+                        button4.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -288,6 +337,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b4.equals("4")) {
                         button4.setText("3");
+                        button4.setBackgroundResource(R.drawable.redroundbutton);
+                        button4.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -295,6 +346,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b4.equals("3")) {
                         button4.setText("2");
+                        button4.setBackgroundResource(R.drawable.redroundbutton);
+                        button4.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -302,6 +355,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b4.equals("2")) {
                         button4.setText("1");
+                        button4.setBackgroundResource(R.drawable.redroundbutton);
+                        button4.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -309,6 +364,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b4.equals("1")) {
                         button4.setText("0");
+                        button4.setBackgroundResource(R.drawable.redroundbutton);
+                        button4.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -316,6 +373,7 @@ public class Main extends AppCompatActivity {
                     }
                     if (b4.equals("0")) {
                         button4.setText("");
+                        button4.setBackgroundResource(R.drawable.roundedbutton);
                         stopTimer();
                         countDowntimer.setText("");
                     }
@@ -341,6 +399,8 @@ public class Main extends AppCompatActivity {
 
                     if (b5.equals("")) {
                         button5.setText("5");
+                        button5.setBackgroundResource(R.drawable.redroundbutton);
+                        button5.setTextColor(getResources().getColor(R.color.textColor));
 
                         Toast.makeText(getApplicationContext(), "Congrats! Rest 3 minutes",
                                 Toast.LENGTH_LONG).show();
@@ -350,6 +410,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b5.equals("5")) {
                         button5.setText("4");
+                        button5.setBackgroundResource(R.drawable.redroundbutton);
+                        button5.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -357,6 +419,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b5.equals("4")) {
                         button5.setText("3");
+                        button5.setBackgroundResource(R.drawable.redroundbutton);
+                        button5.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -364,6 +428,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b5.equals("3")) {
                         button5.setText("2");
+                        button5.setBackgroundResource(R.drawable.redroundbutton);
+                        button5.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -371,6 +437,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b5.equals("2")) {
                         button5.setText("1");
+                        button5.setBackgroundResource(R.drawable.redroundbutton);
+                        button5.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -378,6 +446,8 @@ public class Main extends AppCompatActivity {
                     }
                     if (b5.equals("1")) {
                         button5.setText("0");
+                        button5.setBackgroundResource(R.drawable.redroundbutton);
+                        button5.setTextColor(getResources().getColor(R.color.textColor));
                         Toast.makeText(getApplicationContext(), "Failed! Rest 5 minutes",
                                 Toast.LENGTH_LONG).show();
                         stopTimer();
@@ -385,6 +455,7 @@ public class Main extends AppCompatActivity {
                     }
                     if (b5.equals("0")) {
                         button5.setText("");
+                        button5.setBackgroundResource(R.drawable.roundedbutton);
                         stopTimer();
                         countDowntimer.setText("");
                     }

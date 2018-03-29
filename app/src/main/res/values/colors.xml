@@ -3,4 +3,7 @@
     <color name="colorPrimary">#CC0000</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="defultButton">#D0D0D0</color>
+
 </resources>
