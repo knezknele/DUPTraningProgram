@@ -388,7 +388,7 @@
         app:layout_constraintTop_toBottomOf="@+id/deadlift" />
 
     <Button
-        android:id="@+id/buttonDeadlif4"
+        android:id="@+id/buttonDeadlift4"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="132dp"

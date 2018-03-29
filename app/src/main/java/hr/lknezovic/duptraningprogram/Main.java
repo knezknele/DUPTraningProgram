@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main extends AppCompatActivity {
 
-    private Button button1, button2, button3, button4, button5, bb1, bb2, bb3, bb4;
+    private Button button1, button2, button3, button4, button5, bb1, bb2, bb3, bb4, bd1, bd2, bd3, bd4, bd5, bd6;
     private TextView result, countDowntimer, nameView, benchNameView, DLNameView;
     private EditText weightText, weightB, weightD;
     private CountDownTimer timer;
@@ -59,6 +59,12 @@ public class Main extends AppCompatActivity {
 
         weightD = (EditText) findViewById(R.id.weightDeadlift);
         DLNameView = (TextView) findViewById(R.id.deadlift);
+        bd1 = (Button) findViewById(R.id.buttonDeadlift1);
+        bd2 = (Button) findViewById(R.id.buttonDeadlift2);
+        bd3 = (Button) findViewById(R.id.buttonDeadlift3);
+        bd4 = (Button) findViewById(R.id.buttonDeadlift4);
+        bd1 = (Button) findViewById(R.id.buttonDeadlift5);
+        bd2 = (Button) findViewById(R.id.buttonDeadlift6);
 
 
         weightPerLift = new ArrayList<>();
